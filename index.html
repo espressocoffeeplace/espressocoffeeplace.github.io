@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width,itial-scale">
    <title>Espresso Coffee Place</title>
    <link rel="stylesheet" href="style.css">
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 
 <body>
@@ -20,10 +21,9 @@
    					<li><a href="#home">home</a></li>
    					<li><a href="#menu">menu</a></li>
    					<li><a href="#contact">contact</a></li>
-
 				</ul>
-				</div>
-			</nav>
+			</div>
+		</nav>
 	</header>
 
 <section id="home">
@@ -58,16 +58,50 @@
 </section>
 
 <section id="contact">
-	<h1 class="heading-primary center">Contact Us</h1>
-	<div class="form">
-		<form action="#" method="get" accept-charset="UTF-8">
-			<input type="text" name="name" id="name" class="element" placeholder="Name"/><br/>
-			<input type="email" name="Email" id="Email" class="element" placeholder="E-mail"/><br/>
-			<textarea name="feedback" id="feedback" cols="20" rows="8" class="element" placeholders="Enter Your Thougths..."></textarea>
-			<input type="submit" name="submit" id="submit" class="btn"/>
-		</form>
+<div class="container register">
+	<div class="row">
+		<div class="col-md-12">
+				<div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel" aria-labelledby="home-tab">
+					<h3 class="register-heading">Contact Us</h3>
+					<div class="row register-form">
+						<div class="col-md-12">
+							<form method="post" autocomplete="off" name="google-sheet">
+								<div class="form-group">
+									<input type="text" name="Name" class="form-control" placeholder="Your Name *" value="" required=""/>
+								</div>
+								<div class="form-group">
+									<input type="text" name="Email" class="form-control" placeholder="Your Email *" value="" required=""/>
+								</div>
+								<div class="form-group">
+									<input type="text" name="Feedback" class="form-control" placeholder="Enter Your Thoughts *" value="" required=""/>
+								</div>
+								<div class="form-group">
+									<input type="submit" name="submit" class="btnSubmit btn-block" value="Submit" />
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+		</div>
 	</div>
+</div>
 </section>
+  
+  <script>
+	const scriptURL = 'https://script.google.com/macros/s/AKfycbynDPN_R2Uaho-4RkWt_UjoufXMugHScuWLSgriv5e1yU0LoKtFg5heqVqAZdsyHAdT/exec'
+	const form = document.forms['google-sheet']
+  
+	form.addEventListener('submit', e => {
+	  e.preventDefault()
+	  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+		.then(response => alert("Thanks for Reaching Us!"))
+		.catch(error => console.error('Error!', error.message))
+	})
+  </script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </body>
 
 </html>
